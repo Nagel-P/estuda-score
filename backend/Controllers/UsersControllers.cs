@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using backend.Data;
 using backend.Models;
+using backend.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,9 +15,12 @@ namespace backend.Controllers
     public class UsersControllers : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
+         private readonly JwtService _jwtService;
 
-        public UsersControllers(AppDbContext appDbContext) {
+
+        public UsersControllers(AppDbContext appDbContext, JwtService jwtService) {
             _appDbContext = appDbContext;
+            _jwtService = jwtService;
         }
 
     [HttpPost("login")]
@@ -26,8 +30,10 @@ namespace backend.Controllers
         
         if (user == null || user.Password != login.Password)
             return Unauthorized("Credenciais inválidas");
+            
+        var token = _jwtService.GenerateToken(user.Id, user.Username, user.Role);
 
-        return Ok(new { user.Id, user.Username, user.Role });
+        return Ok(new { Token = token, Role = user.Role });
     }
 
     // GET: api/users

@@ -41,3 +41,11 @@ C:\college-projects-sw\EstudaScore\estuda-score\backend\obj\Debug\net8.0\refint\
 C:\college-projects-sw\EstudaScore\estuda-score\backend\obj\Debug\net8.0\backend.pdb
 C:\college-projects-sw\EstudaScore\estuda-score\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 C:\college-projects-sw\EstudaScore\estuda-score\backend\obj\Debug\net8.0\ref\backend.dll
+C:\college-projects-sw\EstudaScore\estuda-score\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\college-projects-sw\EstudaScore\estuda-score\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\college-projects-sw\EstudaScore\estuda-score\backend\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\college-projects-sw\EstudaScore\estuda-score\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\college-projects-sw\EstudaScore\estuda-score\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\college-projects-sw\EstudaScore\estuda-score\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\college-projects-sw\EstudaScore\estuda-score\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\college-projects-sw\EstudaScore\estuda-score\backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
