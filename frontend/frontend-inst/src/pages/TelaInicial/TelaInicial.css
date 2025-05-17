@@ -1,0 +1,127 @@
+/* src/index.css */
+
+/* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800&display=swap');
+
+/* Estilos globais */
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-image: url('C:\Users\brian\OneDrive\Área de Trabalho\Trabalho sexta\estuda-score\frontend\frontend-inst\public\images\azulp.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: #fff; /* Texto branco para melhor contraste com fundos escuros */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+/* Estilos para a box principal */
+.tela-inicial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 960px;
+  text-align: center;
+  padding: 80px; /* Aumentei o padding para mais espaço interno */
+  border-radius: 20px;
+  background-color: rgba(20, 20, 20, 0.8); /* Fundo preto mais escuro e um pouco mais opaco */
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6); /* Sombra mais intensa */
+  backdrop-filter: blur(12px); /* Aumentei o blur para um efeito mais pronunciado */
+}
+
+/* Estilo do cabeçalho */
+.cabecalho {
+  background-color: rgba(30, 30, 30, 0.7); /* Fundo mais escuro e um pouco mais opaco */
+  color: #fff;
+  padding: 40px 60px;
+  margin-bottom: 60px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Sombra mais intensa */
+  animation: slideInDown 1s ease-out;
+  border: 1px solid rgba(50, 50, 50, 0.5); /* Borda mais escura e visível */
+}
+
+.cabecalho h1 {
+  margin: 0;
+  font-size: 4em; /* Título maior e mais moderno */
+  letter-spacing: 1px;
+  font-weight: 800; /* Fonte mais forte */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.cabecalho h1 .nome-principal {
+  color: #4dd0e1; /* Cor de destaque moderna (ciano) */
+}
+
+.cabecalho .subtitulo-cabecalho {
+  color: #eee;
+  font-size: 1.4em;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+/* Estilo do container dos botões */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Botões ocupam toda a largura */
+  gap: 20px; /* Espaçamento entre os botões */
+  width: 80%;
+  max-width: 400px; /* Largura máxima mais estreita para os botões */
+}
+
+.botao-principal {
+  text-decoration: none;
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 25px; /* Bordas mais arredondadas e modernas */
+  font-size: 1.2em;
+  font-weight: 700;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Sombra mais intensa */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  border: none;
+  background-color: rgba(63, 81, 181, 0.9); /* Azul arroxeado moderno e mais opaco */
+}
+
+.botao-principal:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra mais intensa no hover */
+  background-color: rgba(48, 63, 159, 1); /* Azul arroxeado mais escuro no hover */
+}
+
+.botao-principal:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra ao clicar */
+}
+
+/* Estilo do rodapé - Corrigindo o posicionamento */
+.rodape {
+  color: #eee;
+  padding: 30px;
+  font-size: 0.9em;
+  text-align: center;
+  margin-top: 80px; /* Aumentei a margem superior para mais espaço */
+  width: 100%; /* Garante que ocupa a largura total */
+  position: relative; /* Muda para relative para não ser cortado pelo overflow do body */
+  bottom: auto; /* Remove a propriedade bottom */
+  left: auto; /* Remove a propriedade left */
+  right: auto; /* Remove a propriedade right */
+}
+
+/* Animações */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
