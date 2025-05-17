@@ -13,5 +13,7 @@ namespace backend.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Recompensa> Recompensas { get; set; }
+        public DbSet<Vale> Vales { get; set; }
+
     }
 }
