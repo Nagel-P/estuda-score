@@ -17,7 +17,7 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Recompensa>>> MostrarRecompensas()
         {
-            var recompensas = await _appDbContext.Users.ToListAsync();
+            var recompensas = await _appDbContext.Recompensas.ToListAsync();
             return Ok(recompensas);
         }
 
