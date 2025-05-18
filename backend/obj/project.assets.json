@@ -1749,19 +1749,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Igor\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\React\\Estuda Score\\estuda-score\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\college-projects-sw\\EstudaScore\\estuda-score\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\React\\Estuda Score\\estuda-score\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\React\\Estuda Score\\estuda-score\\backend\\obj\\",
+      "projectPath": "C:\\college-projects-sw\\EstudaScore\\estuda-score\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
+      "outputPath": "C:\\college-projects-sw\\EstudaScore\\estuda-score\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1832,7 +1832,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
