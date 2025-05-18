@@ -1,25 +1,25 @@
-/* src/pages/PainelAluno/PainelAluno.css */
+
 
 .painel-aluno {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Alinhar o conteúdo no topo inicialmente */
+  justify-content: flex-start; 
   min-height: 100vh;
   padding: 60px;
-  background-color: rgba(20, 20, 20, 0.8); /* Fundo escuro e elegante */
+  background-color: rgba(20, 20, 20, 0.8); 
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(12px);
   border-radius: 20px;
   width: 90%;
   max-width: 960px;
-  margin: 40px auto; /* Centralizar a tela com margens */
+  margin: 40px auto; 
 }
 
 /* Cabeçalho moderno */
 .cabecalho-pagina {
   display: flex;
-  justify-content: space-between; /* Espaço entre o título e o botão */
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   margin-bottom: 40px;
@@ -34,11 +34,11 @@
   margin: 0;
 }
 
-/* Botão de voltar para a tela inicial */
+
 .botao-voltar {
   text-decoration: none;
   color: #fff;
-  background-color: rgba(63, 81, 181, 0.9); /* Azul arroxeado moderno */
+  background-color: rgba(63, 81, 181, 0.9); 
   padding: 12px 20px;
   border-radius: 25px;
   font-size: 1em;
@@ -52,7 +52,7 @@
   transform: translateY(-2px);
 }
 
-/* Estilos para o conteúdo principal */
+
 .conteudo-principal {
   width: 100%;
   display: flex;
@@ -73,7 +73,7 @@
 .resumo-aluno h2,
 .resumo-transacoes h2,
 .acoes-rapidas h2 {
-  color: #4dd0e1; /* Ciano para os títulos das seções */
+  color: #4dd0e1;
   margin-top: 0;
   margin-bottom: 15px;
   font-size: 1.6em;
@@ -89,7 +89,7 @@
   display: inline-block;
   text-decoration: none;
   color: #fff;
-  background-color: rgba(100, 149, 237, 0.8); /* Cornflower blue */
+  background-color: rgba(100, 149, 237, 0.8);
   padding: 10px 15px;
   border-radius: 8px;
   font-size: 1em;
@@ -110,7 +110,7 @@
 .acoes-rapidas .botao-principal {
   text-decoration: none;
   color: #fff;
-  background-color: rgba(63, 81, 181, 0.9); /* Azul arroxeado moderno */
+  background-color: rgba(63, 81, 181, 0.9); 
   padding: 15px 25px;
   border-radius: 25px;
   font-size: 1.1em;
@@ -134,4 +134,27 @@
   font-size: 0.9em;
   margin-top: 40px;
   border-top: 1px solid rgba(50, 50, 50, 0.5);
+}
+.aluno-item .botao-secundario {
+  background-color: #f0f0f0; /* Cor de fundo clara */
+  color: #333; /* Cor do texto escura */
+  border: 1px solid #ccc; /* Borda sutil */
+  border-radius: 6px; /* Cantos arredondados */
+  padding: 8px 12px; /* Espaçamento interno */
+  font-size: 0.9em; /* Tamanho da fonte um pouco menor */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-top: 5px; /* Espaçamento acima do botão */
+}
+
+.aluno-item .botao-secundario:hover {
+  background-color: #e0e0e0; /* Cor de fundo um pouco mais escura no hover */
+  color: #007bff; /* Cor do texto azul no hover (cor primária, se aplicável) */
+  border-color: #007bff; /* Borda azul no hover */
+}
+
+.aluno-item .botao-secundario:active {
+  background-color: #d0d0d0; /* Cor de fundo mais escura ao clicar */
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.1); /* Remove a sombra ao clicar */
 }

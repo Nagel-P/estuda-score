@@ -1,0 +1,142 @@
+/* src/components/RegistrarAluno/RegistrarAlunoModal.css */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente mais escuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #333; /* Fundo mais escuro para o conteúdo */
+  color: #eee;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada */
+  width: 90%; /* Aumenta a largura em telas menores */
+  max-width: 500px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px; /* Aumenta o espaçamento abaixo do cabeçalho */
+  border-bottom: 1px solid rgba(50, 50, 50, 0.7); /* Linha mais visível */
+  padding-bottom: 20px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 2em; /* Título maior */
+  font-weight: 600;
+}
+
+.modal-close-button {
+  background: none;
+  color: #aaa;
+  border: none;
+  font-size: 1.8em; /* Botão de fechar maior */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close-button:hover {
+  color: #eee;
+}
+
+.modal-body {
+  margin-bottom: 30px; /* Aumenta o espaçamento abaixo do corpo */
+}
+
+.registro-aluno-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Aumenta o espaçamento entre os grupos de formulário */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: #ccc; /* Cor da label mais clara */
+  margin-bottom: 8px;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 12px; /* Aumenta o preenchimento dos inputs */
+  border: 1px solid #555;
+  border-radius: 8px; /* Bordas mais arredondadas */
+  background-color: #444; /* Fundo mais claro para os inputs */
+  color: #eee;
+  font-size: 1em;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4dd0e1; /* Cor de foco mais vibrante */
+  box-shadow: 0 0 5px rgba(77, 208, 225, 0.5); /* Adiciona uma sombra suave ao foco */
+}
+
+.botao-principal {
+  background-color: rgba(63, 81, 181, 0.9);
+  color: #fff;
+  padding: 15px 25px; /* Aumenta o preenchimento do botão */
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1em; /* Fonte maior no botão */
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Sombra no botão */
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.botao-principal:hover {
+  background-color: rgba(48, 63, 159, 1);
+  transform: translateY(-2px);
+}
+
+
+.mensagem-sucesso {
+  text-align: center;
+  padding: 30px; /* Aumenta o preenchimento */
+  background-color: #4CAF50; /* Verde mais vibrante */
+  color: #fff; /* Texto branco para contraste */
+  border-radius: 12px; /* Bordas mais arredondadas */
+  margin-bottom: 30px; /* Aumenta a margem inferior */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra */
+}
+
+.mensagem-sucesso p {
+  font-size: 1.5em; /* Texto maior */
+  font-weight: bold; /* Texto em negrito */
+  margin-bottom: 20px; /* Espaçamento abaixo da mensagem */
+}
+
+.mensagem-sucesso .botao-principal {
+  background-color: #388E3C; /* Verde mais escuro para o botão */
+  color: #fff;
+  padding: 15px 30px; /* Aumenta o preenchimento do botão */
+  border-radius: 25px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra no botão */
+}
+
+.mensagem-sucesso .botao-principal:hover {
+  background-color: #1B5E20; /* Verde ainda mais escuro no hover */
+  transform: translateY(-2px);
+}
