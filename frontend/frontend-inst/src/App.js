@@ -1,11 +1,14 @@
 import React from 'react';
-import TelaInicial from './pages/TelaInicial/TelaInicial.jsx';
+import { Routes, Route } from 'react-router-dom';
+import TelaInicial from './pages/TelaInicial/TelaInicial';
+import PainelAluno from './pages/PainelAluno/PainelAluno';
 
 function App() {
   return (
-    <div className="App">
-      <TelaInicial />
-    </div>
+    <Routes>
+      <Route path="/" element={<TelaInicial />} />
+      <Route path="/painel-aluno" element={<PainelAluno />} />
+    </Routes>
   );
 }
 
