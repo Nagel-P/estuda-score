@@ -1749,19 +1749,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Igor\\.nuget\\packages\\": {}
+    "C:\\Users\\Financeiro7\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\college-projects-sw\\EstudaScore\\estuda-score\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\Financeiro7\\Documents\\estuda-score\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\college-projects-sw\\EstudaScore\\estuda-score\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
-      "outputPath": "C:\\college-projects-sw\\EstudaScore\\estuda-score\\backend\\obj\\",
+      "projectPath": "C:\\Users\\Financeiro7\\Documents\\estuda-score\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\Financeiro7\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Financeiro7\\Documents\\estuda-score\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Financeiro7\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1832,7 +1832,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.408/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
