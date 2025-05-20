@@ -16,7 +16,7 @@
   margin: 40px auto; 
 }
 
-/* Cabeçalho moderno */
+
 .cabecalho-pagina {
   display: flex;
   justify-content: space-between;
@@ -136,25 +136,25 @@
   border-top: 1px solid rgba(50, 50, 50, 0.5);
 }
 .aluno-item .botao-secundario {
-  background-color: #f0f0f0; /* Cor de fundo clara */
-  color: #333; /* Cor do texto escura */
-  border: 1px solid #ccc; /* Borda sutil */
-  border-radius: 6px; /* Cantos arredondados */
-  padding: 8px 12px; /* Espaçamento interno */
-  font-size: 0.9em; /* Tamanho da fonte um pouco menor */
+  background-color: #f0f0f0; 
+  color: #333; 
+  border: 1px solid #ccc; 
+  border-radius: 6px; 
+  padding: 8px 12px; 
+  font-size: 0.9em; 
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  margin-top: 5px; /* Espaçamento acima do botão */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
 }
 
 .aluno-item .botao-secundario:hover {
-  background-color: #e0e0e0; /* Cor de fundo um pouco mais escura no hover */
-  color: #007bff; /* Cor do texto azul no hover (cor primária, se aplicável) */
-  border-color: #007bff; /* Borda azul no hover */
+  background-color: #e0e0e0; 
+  color: #007bff; 
+  border-color: #007bff; 
 }
 
 .aluno-item .botao-secundario:active {
-  background-color: #d0d0d0; /* Cor de fundo mais escura ao clicar */
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.1); /* Remove a sombra ao clicar */
+  background-color: #d0d0d0; 
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.1); 
 }

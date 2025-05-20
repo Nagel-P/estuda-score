@@ -1,30 +1,29 @@
-// src/pages/PainelAluno/PainelAluno.jsx
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './PainelAluno.css';
 
-// Importações de componentes de modal
 import HistoricoTransacoesModal from '../../components/HistoricoTransacoes/HistoricoTransacoesModal';
 import RegistrarAlunoModal from '../../components/RegistrarAluno/RegistrarAlunoModal';
 import EditarAlunoModal from '../../components/EditorAluno/EditarAlunoModal';
 import '../../components/EditorAluno/EditarAlunoModal.css';
 
 function PainelAluno() {
-  // Estados para controlar a visibilidade dos modais
+ 
   const [mostrarHistorico, setMostrarHistorico] = useState(false);
   const [mostrarRegistroAluno, setMostrarRegistroAluno] = useState(false);
   const [mostrarEditarAluno, setMostrarEditarAluno] = useState(false);
 
-  // Estado para armazenar o aluno a ser editado
+  
   const [alunoParaEditar, setAlunoParaEditar] = useState(null);
 
-  // Array de alunos de exemplo (substituir pela busca do backend)
+ 
   const alunos = [
     { id: 1, nome: 'João Silva', email: 'joao.silva@email.com', turma: 'A' },
     { id: 2, nome: 'Maria Souza', email: 'maria.souza@email.com', turma: 'B' },
   ];
 
-  // Funções para abrir e fechar modais
+
   const abrirHistorico = () => {
     setMostrarHistorico(true);
   };
@@ -53,11 +52,10 @@ function PainelAluno() {
     setAlunoParaEditar(null);
   };
 
-  // Função para lidar com a edição do aluno (a ser implementada)
   const handleAlunoEditado = (alunoEditado) => {
     console.log('Aluno editado no PainelAluno:', alunoEditado);
     fecharEditarAluno();
-    // Aqui você chamaria a função para atualizar a lista de alunos
+   
   };
 
   return (
@@ -95,14 +93,13 @@ function PainelAluno() {
           <button onClick={abrirRegistroAluno} className="botao-principal">
             Registrar Novo Aluno
           </button>
-          {/* O botão "Editar Aluno" agora está na lista de alunos */}
+        
         </section>
       </main>
       <footer className="rodape-pagina">
         <p>© 2025 EducaScore - Painel do Aluno</p>
       </footer>
 
-      {/* Renderização condicional dos modais */}
       {mostrarHistorico && <HistoricoTransacoesModal onClose={fecharHistorico} />}
       {mostrarRegistroAluno && <RegistrarAlunoModal onClose={fecharRegistroAluno} />}
       {mostrarEditarAluno && alunoParaEditar && (

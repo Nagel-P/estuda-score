@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Certifique-se de que Link está importado
 import './TelaInicial.css';
 
 function TelaInicial() {
@@ -12,12 +12,12 @@ function TelaInicial() {
 
       <div className="menu-container">
         <Link to="/painel-aluno" className="botao-principal">Painel de Controle de Aluno</Link>
-        <Link to="/lista-alunos" className="botao-principal">Lista de Alunos</Link>
+        <Link to="/lista-alunos" className="botao-principal">Lista de Alunos</Link> 
         <Link to="/inclusao-notas" className="botao-principal">Inclusão de Notas</Link>
       </div>
 
       <footer className="rodape">
-        © 2025 Educatech - Todos os direitos reservados
+        © 2025 EducaScore - Todos os direitos reservados
       </footer>
     </div>
   );

@@ -6,9 +6,7 @@ function RegistrarAlunoModal({ onClose }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Aqui você colocaria a lógica para enviar os dados para o backend
     console.log('Formulário de registro enviado!');
-    // Supondo que o registro foi bem-sucedido (você ajustará isso com a resposta do backend)
     setRegistroSucesso(true);
   };
 

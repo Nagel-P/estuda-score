@@ -1,4 +1,4 @@
-/* src/components/EditarAluno/EditarAlunoModal.css */
+
 
 .modal-overlay {
   position: fixed;
@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente mais suave */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,11 +14,11 @@
 }
 
 .modal-content {
-  background-color: #f9f9f9; /* Fundo claro e neutro */
-  color: #333; /* Cor do texto principal mais escura */
+  background-color: #f9f9f9; 
+  color: #333;
   padding: 30px;
-  border-radius: 8px; /* Bordas mais suaves */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+  border-radius: 8px; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
   width: 90%;
   max-width: 500px;
 }
@@ -27,39 +27,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px; /* Espaçamento inferior reduzido */
-  border-bottom: 1px solid #eee; /* Borda inferior mais clara */
-  padding-bottom: 15px; /* Espaçamento inferior da borda reduzido */
+  margin-bottom: 20px; 
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px; 
 }
 
 .modal-header h2 {
   margin: 0;
-  font-size: 1.8em; /* Tamanho da fonte um pouco menor */
+  font-size: 1.8em; 
   font-weight: 600;
-  color: #333; /* Cor do título mais escura */
+  color: #333; 
 }
 
 .modal-close-button {
   background: none;
   color: #aaa;
   border: none;
-  font-size: 1.5em; /* Tamanho do ícone de fechar um pouco menor */
+  font-size: 1.5em;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .modal-close-button:hover {
-  color: #666; /* Cor ao passar o mouse mais escura */
+  color: #666; 
 }
 
 .modal-body {
-  margin-bottom: 25px; /* Espaçamento inferior reduzido */
+  margin-bottom: 25px;
 }
 
 .editar-aluno-form {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espaçamento entre os campos menor */
+  gap: 15px;
 }
 
 .form-group {
@@ -68,52 +68,51 @@
 }
 
 .form-group label {
-  color: #555; /* Cor da label um pouco mais escura */
-  margin-bottom: 5px; /* Espaçamento inferior menor */
+  color: #555;
+  margin-bottom: 5px; 
   font-size: 1em;
   font-weight: 500;
 }
 
 .form-group input {
-  padding: 10px; /* Padding menor */
-  border: 1px solid #ccc; /* Borda mais clara */
-  border-radius: 4px; /* Bordas mais suaves */
-  background-color: #fff; /* Fundo branco */
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  background-color: #fff; 
   color: #333;
   font-size: 1em;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #007bff; /* Cor de foco azul padrão */
-  box-shadow: 0 0 3px rgba(0, 123, 255, 0.5); /* Sombra de foco suave */
+  border-color: #007bff; 
+  box-shadow: 0 0 3px rgba(0, 123, 255, 0.5); 
 }
 
 .botao-principal {
-  background-color: #007bff; /* Cor primária azul */
+  background-color: #007bff; 
   color: #fff;
-  padding: 12px 20px; /* Padding menor */
+  padding: 12px 20px; 
   border: none;
-  border-radius: 6px; /* Bordas mais suaves */
-  font-size: 1em;
+  border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   transition: background-color 0.3s ease;
 }
 
 .botao-principal:hover {
-  background-color: #0056b3; /* Cor primária mais escura no hover */
+  background-color: #0056b3;
 }
 
 .mensagem-sucesso {
   text-align: center;
   padding: 20px;
-  background-color: #d4edda; /* Cor de fundo verde clara para sucesso */
-  color: #155724; /* Cor do texto verde escura para sucesso */
+  background-color: #d4edda; 
+  color: #155724; 
   border-radius: 6px;
   margin-bottom: 20px;
-  border: 1px solid #c3e6cb; /* Borda verde clara */
+  border: 1px solid #c3e6cb; 
 }
 
 .mensagem-sucesso p {
@@ -123,9 +122,9 @@
 }
 
 .mensagem-sucesso .botao-principal {
-  background-color: #28a745; /* Cor do botão de OK verde */
+  background-color: #28a745;
 }
 
 .mensagem-sucesso .botao-principal:hover {
-  background-color: #1e7e34; /* Cor do botão de OK verde mais escura no hover */
+  background-color: #1e7e34; 
 }

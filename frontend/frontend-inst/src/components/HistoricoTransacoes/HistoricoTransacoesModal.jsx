@@ -1,13 +1,12 @@
 import React from 'react';
-import './HistoricoTransacoesModal.css'; 
+import './HistoricoTransacoesModal.css';
 
 function HistoricoTransacoesModal({ onClose }) {
-  console.log('HistoricoTransacoesModal renderizado');
-  
   const historico = [
-    { id: 1, data: '2025-05-18', descricao: '...', valor: 'R$ 100,00' },
-    { id: 2, data: '2025-04-20', descricao: '...', valor: 'R$ 50,00' },
-    
+    { id: 1, data: '2025-05-18', descricao: 'Mensalidade Maio', valor: 'R$ 100,00' },
+    { id: 2, data: '2025-04-20', descricao: 'Livro Didático', valor: 'R$ 50,00' },
+    { id: 3, data: '2025-03-25', descricao: 'Passeio Escolar', valor: 'R$ 80,00' },
+    // ... mais transações
   ];
 
   return (
@@ -20,14 +19,18 @@ function HistoricoTransacoesModal({ onClose }) {
           </button>
         </header>
         <main className="modal-body">
-          {historico.map(transacao => (
-            <div key={transacao.id} className="transacao-item">
-              <p>Data: {transacao.data}</p>
-              <p>Descrição: {transacao.descricao}</p>
-              <p>Valor: {transacao.valor}</p>
-            </div>
-          ))}
-          {historico.length === 0 && <p>Nenhuma transação encontrada.</p>}
+          <ul className="historico-lista">
+            {historico.map(transacao => (
+              <li key={transacao.id} className="transacao-item">
+                <div className="transacao-detalhes">
+                  <span className="transacao-data">{transacao.data}</span>
+                  <span className="transacao-valor">{transacao.valor}</span>
+                </div>
+                {transacao.descricao && <p className="transacao-descricao">{transacao.descricao}</p>}
+              </li>
+            ))}
+            {historico.length === 0 && <p>Nenhuma transação encontrada.</p>}
+          </ul>
         </main>
       </div>
     </div>
