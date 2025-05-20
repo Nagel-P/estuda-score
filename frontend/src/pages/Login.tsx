@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { FaUser, FaLock } from 'react-icons/fa';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -37,28 +38,35 @@ const Login = () => {
         <h2 style={styles.title}>Login</h2>
         <form onSubmit={handleSubmit} style={styles.form}>
           <div style={styles.inputGroup}>
-            <label style={styles.label}>Usuário:</label>
+            <div style={styles.iconContainer}>
+              <FaUser style={styles.icon} />
+            </div>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
               style={styles.input}
-              placeholder="Digite seu usuário"
+              placeholder="Usuário"
             />
           </div>
+
           <div style={styles.inputGroup}>
-            <label style={styles.label}>Senha:</label>
+            <div style={styles.iconContainer}>
+              <FaLock style={styles.icon} />
+            </div>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               style={styles.input}
-              placeholder="Digite sua senha"
+              placeholder="Senha"
             />
           </div>
+
           {erro && <p style={styles.error}>{erro}</p>}
+
           <button type="submit" style={styles.button}>Entrar</button>
         </form>
       </div>
@@ -82,7 +90,7 @@ const styles = {
   container: {
     maxWidth: 400,
     margin: 'auto',
-    padding: 30,
+    padding: 50,
     boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
     borderRadius: 8,
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
@@ -96,24 +104,31 @@ const styles = {
   form: {
     display: 'flex',
     flexDirection: 'column',
+    gap: 16,
   } as React.CSSProperties,
   inputGroup: {
-    marginBottom: 16,
     display: 'flex',
-    flexDirection: 'column',
+    alignItems: 'center',
+    border: '1px solid #ccc',
+    borderRadius: 4,
+    padding: '10px 12px',
+    backgroundColor: '#fff',
   } as React.CSSProperties,
-  label: {
-    marginBottom: 6,
-    fontWeight: 600,
+  iconContainer: {
+    marginRight: 8,
+    display: 'flex',
+    alignItems: 'center',
+  } as React.CSSProperties,
+  icon: {
     color: '#555',
+    fontSize: 18,
   } as React.CSSProperties,
   input: {
-    padding: '10px 12px',
+    flex: 1,
+    border: 'none',
     fontSize: 16,
-    borderRadius: 4,
-    border: '1px solid #ccc',
-    outlineColor: '#007bff',
-    transition: 'border-color 0.3s',
+    outline: 'none',
+    backgroundColor: 'transparent',
   } as React.CSSProperties,
   error: {
     color: 'red',
