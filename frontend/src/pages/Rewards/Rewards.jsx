@@ -1,5 +1,5 @@
 import React from 'react';
-import Background from '../../assets/Background.jpg';
+import backgroundImg from '../../assets/Background.jpg';
 
 const rewardsData = [
   { id: 1, name: 'Café Grátis na Cantina', points: 200, image: 'img/reward1.png' },
