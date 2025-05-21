@@ -1,0 +1,41 @@
+/* src/components/HistoricoTransacoesModal.css */
+
+/* ... (seu CSS existente) ... */
+
+.historico-lista {
+  list-style: none; /* Remove os marcadores de lista padrão */
+  padding: 0;
+}
+
+.transacao-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #333;
+  border-bottom: 1px solid #555; /* Adiciona uma linha divisória entre as transações */
+}
+
+.transacao-detalhes {
+  display: flex;
+  justify-content: space-between; /* Alinha data à esquerda e valor à direita */
+  align-items: center;
+  margin-bottom: 10px; /* Espaçamento entre data/valor e descrição */
+}
+
+.transacao-data {
+  font-weight: bold;
+  color: #eee;
+}
+
+.transacao-valor {
+  color: #4CAF50; /* Cor para destacar o valor */
+}
+
+.transacao-descricao {
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+.transacao-item:last-child {
+  border-bottom: none; /* Remove a linha inferior da última transação */
+}

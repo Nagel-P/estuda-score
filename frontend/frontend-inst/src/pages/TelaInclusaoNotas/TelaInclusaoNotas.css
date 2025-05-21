@@ -1,0 +1,125 @@
+/* TelaInclusaoNotas.css */
+.tela-inclusao-notas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa; /* Cor de fundo suave */
+  min-height: 100vh;
+}
+
+.tela-inclusao-notas h1 {
+  font-size: 2.5em;
+  color: #343a40; /* Cor do título */
+  margin-bottom: 30px;
+}
+
+.botao-voltar {
+  padding: 10px 15px;
+  background-color: #6c757d; /* Cor de fundo cinza */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none; /* Remove o sublinhado padrão do Link */
+  margin-bottom: 20px; /* Espaçamento abaixo do botão */
+  transition: background-color 0.3s ease;
+}
+
+.botao-voltar:hover {
+  background-color: #5a6268;
+}
+
+.conteudo-principal {
+  width: 95%;
+  max-width: 1200px; /* Largura máxima para telas maiores */
+  margin-top: 30px;
+  background-color: #fff; /* Fundo do conteúdo */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 30px;
+}
+
+.tabela-notas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  overflow: hidden; /* Para arredondar as bordas da tabela */
+}
+
+.tabela-notas h2 {
+  font-size: 1.8em;
+  color: #343a40;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.tabela-notas th, .tabela-notas td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef; /* Linha divisória suave */
+}
+
+.tabela-notas th {
+  background-color: #007bff; /* Cor de fundo do cabeçalho */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center; /* Centralizar o texto do cabeçalho */
+}
+
+.tabela-notas tbody tr:nth-child(even) {
+  background-color: #f8f9fa; /* Cor de fundo para linhas pares */
+}
+
+.tabela-notas input::-webkit-outer-spin-button,
+.tabela-notas input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.tabela-notas input {
+  width: 70px; /* Reduzir um pouco a largura para melhor alinhamento */
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1em;
+  text-align: center; /* Alinhar o texto dentro do input */
+}
+
+.tabela-notas td button {
+  padding: 8px 12px; /* Reduzir um pouco o padding vertical */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em; /* Reduzir um pouco a fonte */
+  transition: background-color 0.3s ease;
+  display: block; /* Fazer o botão ocupar a largura disponível da célula */
+  width: 100%;
+  text-align: center; /* Centralizar o texto do botão */
+  box-sizing: border-box; /* Incluir padding e borda na largura e altura */
+}
+
+.tabela-notas td button:hover {
+  background-color: #0056b3;
+}
+
+.botao-salvar {
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+.botao-salvar:hover {
+  background-color: #1e7e34;
+}
