@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // Importações das páginas
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -12,17 +12,15 @@ import TelaListaAlunos from './pages/TelaListaAlunos/TelaListaAlunos';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<TelaInicial />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/painel-aluno" element={<PainelAluno />} />
-        <Route path="/rewards" element={<Rewards />} />
-        <Route path="/inclusao-notas" element={<TelaInclusaoNotas />} />
-        <Route path="/lista-alunos" element={<TelaListaAlunos />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<TelaInicial />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/painel-aluno" element={<PainelAluno />} />
+      <Route path="/rewards" element={<Rewards />} />
+      <Route path="/inclusao-notas" element={<TelaInclusaoNotas />} />
+      <Route path="/lista-alunos" element={<TelaListaAlunos />} />
+    </Routes>
   );
 }
 
