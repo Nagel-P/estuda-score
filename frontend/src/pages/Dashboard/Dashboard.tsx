@@ -5,7 +5,7 @@ function TelaInicial() {
   return (
     <div className="tela-inicial">
       <header className="cabecalho">
-        <h1><span className="nome-principal">Educatech</span></h1>
+        <h1><span className="nome-principal">EstudaScore</span></h1>
         <p className="subtitulo-cabecalho">Painel de Controle da Instituição</p>
       </header>
 

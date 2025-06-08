@@ -1,42 +1,36 @@
-
 import React, { useState } from 'react';
 import './EditarAlunoModal.css';
+import axios from 'axios';
 
-function EditarAlunoModal({ aluno, onClose, onAlunoEditado }) {
-  const [nome, setNome] = useState(aluno ? aluno.nome : '');
+function EditarAlunoModal({ aluno, onClose, onClose: fecharModal, onClose: atualizarLista }) {
+  const [username, setUsername] = useState(aluno ? aluno.username : '');
   const [email, setEmail] = useState(aluno ? aluno.email : '');
-  const [turma, setTurma] = useState(aluno ? aluno.turma : '');
+  const [pontos, setPontos] = useState(aluno ? aluno.pontos : '');
   const [edicaoSucesso, setEdicaoSucesso] = useState(false);
 
-  const handleChangeNome = (event) => {
-    setNome(event.target.value);
-  };
-
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleChangeTurma = (event) => {
-    setTurma(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Simulação da lógica de edição (você substituirá pela sua lógica real)
-    const alunoEditado = { id: aluno.id, nome, email, turma };
-    console.log('Aluno editado:', alunoEditado);
-    setEdicaoSucesso(true);
-    // Opcional: Chamar uma função para atualizar a lista de alunos no componente pai
-    if (onAlunoEditado) {
-      onAlunoEditado(alunoEditado);
+    try {
+      const alunoAtualizado = {
+        id: aluno.id,
+        username,
+        email,
+        pontos: parseInt(pontos),
+        password: aluno.password, // necessário se o backend exigir a senha
+        role: aluno.role // manter se o backend usar
+      };
+
+      await axios.put(`http://localhost:5210/api/Users/${aluno.id}`, alunoAtualizado);
+
+      setEdicaoSucesso(true);
+    } catch (error) {
+      console.error('Erro ao editar aluno:', error);
     }
-    // Opcional: Fechar o modal após alguns segundos
-    // setTimeout(onClose, 2000);
   };
 
   const handleFecharAposSucesso = () => {
     setEdicaoSucesso(false);
-    onClose();
+    fecharModal(true); // sinaliza que o aluno foi editado com sucesso
   };
 
   if (!aluno) {
@@ -45,7 +39,7 @@ function EditarAlunoModal({ aluno, onClose, onAlunoEditado }) {
         <div className="modal-content">
           <h2>Erro</h2>
           <p>Nenhum aluno selecionado para editar.</p>
-          <button onClick={onClose} className="modal-close-button">
+          <button onClick={() => fecharModal(false)} className="modal-close-button">
             Fechar
           </button>
         </div>
@@ -59,7 +53,7 @@ function EditarAlunoModal({ aluno, onClose, onAlunoEditado }) {
         <header className="modal-header">
           <h2>{edicaoSucesso ? 'Aluno Editado' : 'Editar Aluno'}</h2>
           <button
-            onClick={edicaoSucesso ? handleFecharAposSucesso : onClose}
+            onClick={edicaoSucesso ? handleFecharAposSucesso : () => fecharModal(false)}
             className="modal-close-button"
           >
             Fechar
@@ -77,15 +71,32 @@ function EditarAlunoModal({ aluno, onClose, onAlunoEditado }) {
             <form onSubmit={handleSubmit} className="editar-aluno-form">
               <div className="form-group">
                 <label htmlFor="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" value={nome} onChange={handleChangeNome} required />
+                <input
+                  type="text"
+                  id="nome"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" value={email} onChange={handleChangeEmail} required />
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </div>
               <div className="form-group">
-                <label htmlFor="turma">Turma:</label>
-                <input type="text" id="turma" name="turma" value={turma} onChange={handleChangeTurma} />
+                <label htmlFor="pontos">Pontos:</label>
+                <input
+                  type="number"
+                  id="pontos"
+                  value={pontos}
+                  onChange={(e) => setPontos(e.target.value)}
+                />
               </div>
               <button type="submit" className="botao-principal">Salvar Edições</button>
             </form>

@@ -12,31 +12,32 @@ namespace backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersControllers : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
-         private readonly JwtService _jwtService;
+        private readonly JwtService _jwtService;
 
 
-        public UsersControllers(AppDbContext appDbContext, JwtService jwtService) {
+        public UsersController(AppDbContext appDbContext, JwtService jwtService)
+        {
             _appDbContext = appDbContext;
             _jwtService = jwtService;
         }
 
-    [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginDto login)
-    {
-        var user = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Username == login.Username);
-        
-        if (user == null || user.Password != login.Password)
-            return Unauthorized("Credenciais inválidas");
-            
-        var token = _jwtService.GenerateToken(user.Id, user.Username, user.Role);
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDto login)
+        {
+            var user = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Email == login.Email);
 
-        return Ok(new { Token = token, Role = user.Role });
-    }
+            if (user == null || user.Password != login.Password)
+                return Unauthorized("Credenciais inválidas");
 
-    // GET: api/users
+            var token = _jwtService.GenerateToken(user.Id, user.Username, user.Role);
+
+            return Ok(new { Token = token, Role = user.Role });
+        }
+
+        // GET: api/users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> ObterUsuarios()
         {
@@ -57,9 +58,11 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> AddUser (User user){
-            
-            if (user == null){
+        public async Task<ActionResult<User>> AddUser(User user)
+        {
+
+            if (user == null)
+            {
                 return BadRequest("Dados inválidos");
             }
 
