@@ -1,3 +1,4 @@
+// PainelAluno.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './PainelAluno.css';
@@ -20,13 +21,22 @@ function PainelAluno() {
   }, []);
 
   const carregarAlunos = async () => {
-    try {
-      const response = await axios.get('http://localhost:5210/api/Users');
-      setAlunos(response.data);
-    } catch (error) {
-      console.error('Erro ao carregar alunos:', error);
-    }
-  };
+  try {
+    const response = await axios.get('http://localhost:5210/api/Users');
+
+    // Filtra alunos pelo campo 'role' ou 'username' (ajuste conforme o campo correto)
+    const alunosFiltrados = response.data.filter((aluno) => {
+      if (!aluno.role) return false; // garante que o campo existe
+      const roleLower = aluno.role.toLowerCase();
+      return roleLower === 'aluno' || roleLower === 'alunos';
+    });
+
+    setAlunos(alunosFiltrados);
+  } catch (error) {
+    console.error('Erro ao carregar alunos:', error);
+  }
+};
+
 
   const abrirHistorico = (alunoId) => {
     setHistoricoAlunoId(alunoId);
@@ -44,7 +54,7 @@ function PainelAluno() {
 
   const fecharRegistroAluno = (alunoCriado) => {
     setMostrarRegistroAluno(false);
-    if (alunoCriado) carregarAlunos(); // Recarrega a lista após criar novo aluno
+    if (alunoCriado) carregarAlunos();
   };
 
   const abrirEditarAluno = (aluno) => {
@@ -55,7 +65,7 @@ function PainelAluno() {
   const fecharEditarAluno = (atualizado) => {
     setMostrarEditarAluno(false);
     setAlunoParaEditar(null);
-    if (atualizado) carregarAlunos(); // Recarrega a lista após edição
+    if (atualizado) carregarAlunos();
   };
 
   return (
@@ -93,20 +103,20 @@ function PainelAluno() {
         <p>© 2025 EducaScore - Painel do Aluno</p>
       </footer>
 
-        {mostrarHistorico && historicoAlunoId && (
-          <HistoricoTransacoesModal userId={historicoAlunoId} onClose={fecharHistorico} />
-        )}
+      {mostrarHistorico && historicoAlunoId && (
+        <HistoricoTransacoesModal userId={historicoAlunoId} onClose={fecharHistorico} />
+      )}
 
-        {mostrarRegistroAluno && (
-          <RegistrarAlunoModal onClose={fecharRegistroAluno} />
-        )}
+      {mostrarRegistroAluno && (
+        <RegistrarAlunoModal onClose={fecharRegistroAluno} />
+      )}
 
-        {mostrarEditarAluno && alunoParaEditar && (
-          <EditarAlunoModal
-            aluno={alunoParaEditar}
-            onClose={fecharEditarAluno}
-          />
-        )}
+      {mostrarEditarAluno && alunoParaEditar && (
+        <EditarAlunoModal
+          aluno={alunoParaEditar}
+          onClose={fecharEditarAluno}
+        />
+      )}
     </div>
   );
 }

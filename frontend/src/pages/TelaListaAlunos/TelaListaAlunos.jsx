@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './TelaListaAlunos.css';
 
@@ -6,35 +6,51 @@ function TelaListaAlunos() {
   const navigate = useNavigate();
   const [filtroNome, setFiltroNome] = useState('');
   const [filtroMatricula, setFiltroMatricula] = useState('');
-  const [filtroCurso, setFiltroCurso] = useState('');
-  const [filtroTurma, setFiltroTurma] = useState('');
+  const [filtroPontos, setFiltroPontos] = useState('');
+  const [alunos, setAlunos] = useState([]);
 
-  const alunos = [
-    { id: 1, matricula: '2023001', nome: 'João Silva', email: 'joao.silva@escola.com', curso: 'Engenharia Civil', turma: 'A' },
-    { id: 2, matricula: '2023002', nome: 'Maria Souza', email: 'maria.souza@escola.com', curso: 'Ciência da Computação', turma: 'B' },
-    { id: 3, matricula: '2023003', nome: 'Carlos Nogueira', email: 'carlos.nogueira@escola.com', curso: 'Administração', turma: 'A' },
-    { id: 4, matricula: '2023004', nome: 'Ana Costa', email: 'ana.costa@escola.com', curso: 'Medicina', turma: 'C' },
-    { id: 5, matricula: '2023005', nome: 'Pedro Almeida', email: 'pedro.almeida@escola.com', curso: 'Engenharia Civil', turma: 'B' },
-    { id: 6, matricula: '2023006', nome: 'Juliana Lima', email: 'juliana.lima@escola.com', curso: 'Ciência da Computação', turma: 'A' },
-  ];
+useEffect(() => {
+  async function fetchAlunos() {
+    try {
+      const response = await fetch('http://localhost:5210/api/Users');
+      if (!response.ok) throw new Error('Erro ao buscar alunos');
+      const data = await response.json();
+
+      // ⚠️ Filtro flexível por variações de "aluno"
+      const somenteAlunos = data.filter(user => {
+        const role = (user.role || '').toLowerCase();
+        return ['aluno', 'alunos', 'aluna', 'alunas'].includes(role);
+      });
+
+      console.log('Alunos filtrados:', somenteAlunos);
+      setAlunos(somenteAlunos);
+    } catch (error) {
+      console.error('Erro ao carregar alunos:', error);
+    }
+  }
+
+  fetchAlunos();
+}, []);
+
 
   const alunosFiltrados = alunos.filter(aluno => {
+    const nome = (aluno.nome || '').toLowerCase();
+    const matricula = (aluno.matricula || '').toString();
+    const pontos = (aluno.pontos || '').toString();
+
     return (
-      aluno.nome.toLowerCase().includes(filtroNome.toLowerCase()) &&
-      aluno.matricula.includes(filtroMatricula) &&
-      aluno.curso.toLowerCase().includes(filtroCurso.toLowerCase()) &&
-      aluno.turma.toLowerCase().includes(filtroTurma.toLowerCase())
+      nome.includes(filtroNome.toLowerCase()) &&
+      matricula.includes(filtroMatricula) &&
+      pontos.includes(filtroPontos)
     );
   });
 
   const handleSelecionarAluno = (aluno) => {
-    console.log('Aluno selecionado:', aluno.nome, aluno.matricula);
     alert(`Aluno(a) ${aluno.nome} selecionado(a)!`);
   };
 
   const handleAbrirPainelAluno = (aluno) => {
-    console.log('Abrindo painel para:', aluno.nome, aluno.id);
-    navigate('/painel-aluno', { state: { alunoId: aluno.id } });
+    navigate('/painel-aluno', { state: { alunoMatricula: aluno.matricula } });
   };
 
   return (
@@ -69,23 +85,13 @@ function TelaListaAlunos() {
               />
             </div>
             <div className="filtro-item">
-              <label htmlFor="filtroCurso">Curso:</label>
+              <label htmlFor="filtroPontos">Pontos:</label>
               <input
                 type="text"
-                id="filtroCurso"
-                value={filtroCurso}
-                onChange={(e) => setFiltroCurso(e.target.value)}
-                placeholder="Pesquisar por curso..."
-              />
-            </div>
-            <div className="filtro-item">
-              <label htmlFor="filtroTurma">Turma:</label>
-              <input
-                type="text"
-                id="filtroTurma"
-                value={filtroTurma}
-                onChange={(e) => setFiltroTurma(e.target.value)}
-                placeholder="Pesquisar por turma..."
+                id="filtroPontos"
+                value={filtroPontos}
+                onChange={(e) => setFiltroPontos(e.target.value)}
+                placeholder="Pesquisar por pontos..."
               />
             </div>
           </div>
@@ -100,19 +106,17 @@ function TelaListaAlunos() {
                   <th>Matrícula</th>
                   <th>Nome</th>
                   <th>Email</th>
-                  <th>Curso</th>
-                  <th>Turma</th>
+                  <th>Pontos</th>
                   <th>Ações</th>
                 </tr>
               </thead>
               <tbody>
-                {alunosFiltrados.map(aluno => (
-                  <tr key={aluno.id}>
-                    <td>{aluno.matricula}</td>
-                    <td>{aluno.nome}</td>
-                    <td>{aluno.email}</td>
-                    <td>{aluno.curso}</td>
-                    <td>{aluno.turma}</td>
+                {alunosFiltrados.map((aluno) => (
+                  <tr key={aluno.matricula || aluno.id || Math.random()}>
+                    <td>{aluno.id || 'N/A'}</td>
+                    <td>{aluno.username || 'N/A'}</td>
+                    <td>{aluno.email || 'N/A'}</td>
+                    <td>{aluno.pontos || '0'}</td>
                     <td className="acoes-botoes">
                       <button
                         className="botao-selecionar-aluno"
