@@ -9,6 +9,7 @@ import Rewards from './pages/Rewards/Rewards';
 import TelaInclusaoNotas from './pages/TelaInclusaoNotas/TelaInclusaoNotas';
 import TelaInicial from './pages/TelaInicial/TelaInicial';
 import TelaListaAlunos from './pages/TelaListaAlunos/TelaListaAlunos';
+import MasterAdmin from './pages/TelaMasterAdmin/MasterAdmin';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/rewards" element={<Rewards />} />
       <Route path="/inclusao-notas" element={<TelaInclusaoNotas />} />
       <Route path="/lista-alunos" element={<TelaListaAlunos />} />
+      <Route path="/master-admin" element={<MasterAdmin />} />
     </Routes>
   );
 }

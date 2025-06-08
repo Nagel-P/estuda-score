@@ -15,6 +15,10 @@
   margin-bottom: 30px;
 }
 
+td{
+  color: black;
+}
+
 .botao-voltar {
   padding: 10px 15px;
   background-color: #6c757d; /* Cor de fundo cinza */
@@ -122,4 +126,29 @@
 
 .botao-salvar:hover {
   background-color: #1e7e34;
+}
+
+.import-export {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #007bff;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.import-export-input{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-left: 20px;
+}
+
+.import-export button{
+  margin-right: 20px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

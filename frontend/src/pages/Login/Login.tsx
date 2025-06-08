@@ -8,28 +8,36 @@ const Login = () => {
   const [erro, setErro] = useState('');
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErro('');
+  e.preventDefault();
+  setErro('');
 
-    try {
-      const response = await axios.post('http://localhost:5210/api/Users/login', {
+  try {
+    const response = await axios.post('http://localhost:5210/api/Users/login', {
       email,
       password: senha
-      });
+    });
 
-      const { id, email: nomeUsuario, role } = response.data;
+    const { id, email: nomeUsuario, role } = response.data;
 
-      localStorage.setItem('id', id);
-      localStorage.setItem('email', nomeUsuario);
-      localStorage.setItem('role', role);
+    localStorage.setItem('id', id);
+    localStorage.setItem('email', nomeUsuario);
+    localStorage.setItem('role', role);
 
-      window.location.href = '/dashboard'; // redireciona após login
+        // Redirecionamento baseado no role
+        if (role === 'Aluno' || role === 'aluno') {
+          window.location.href = '/aluno';
+        } else if (role === 'Instituicao') {
+          window.location.href = '/dashboard';
+        } else if (role === 'Admin') {
+          window.location.href = '/admin';
+        } 
 
-    } catch (err: unknown) {
-      console.error(err);
-      setErro('Usuário ou senha inválidos.');
-    }
-  };
+      } catch (err: unknown) {
+        console.error(err);
+        setErro('Usuário ou senha inválidos.');
+      }
+    };
+
 
   return (
     <div style={backgroundStyles}>

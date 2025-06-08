@@ -46,7 +46,7 @@ useEffect(() => {
   });
 
   const handleSelecionarAluno = (aluno) => {
-    alert(`Aluno(a) ${aluno.nome} selecionado(a)!`);
+    alert(`Aluno(a) ${aluno.username} selecionado(a)!`);
   };
 
   const handleAbrirPainelAluno = (aluno) => {

@@ -110,5 +110,60 @@ namespace backend.Controllers
             return File(stream, "application/xml", "notas_exportadas.xml");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetNotas()
+        {
+            var notas = await _context.Notas.ToListAsync();
+            return Ok(notas);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostNota([FromBody] Nota nota)
+        {
+            var user = await _context.Users.FindAsync(nota.UserId);
+            if (user == null) return NotFound("Usuário não encontrado.");
+
+            nota.PontosGerados = (int)(nota.ValorNota * 10);
+            nota.DataLancamento = DateTime.Now;
+
+            user.Pontos += nota.PontosGerados;
+
+            _context.Notas.Add(nota);
+            await _context.SaveChangesAsync();
+
+            return Ok(nota);
+        }
+
+        [HttpPost("batch")]
+        public async Task<IActionResult> PostNotasBatch([FromBody] List<NotaDto> lista) {
+            foreach (var dto in lista) {
+                var nota = new Nota {
+                    UserId = dto.UserId,
+                    Disciplina = dto.Disciplina,
+                    ValorNota = dto.ValorNota,
+                    PontosGerados = (int)(dto.ValorNota * 10),
+                    DataLancamento = DateTime.Now
+                };
+
+                var user = await _context.Users.FindAsync(dto.UserId);
+                if (user != null)
+                {
+                    user.Pontos += nota.PontosGerados;
+                    _context.Notas.Add(nota);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+            return Ok("Notas salvas com sucesso!");
+        }
+
+
+        public class NotaDto {
+            public int UserId { get; set; }
+            public string Disciplina { get; set; }
+            public double ValorNota { get; set; }
+        }
+
+
     }
 }
