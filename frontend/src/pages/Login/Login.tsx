@@ -1,34 +1,32 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { FaUser, FaLock } from 'react-icons/fa';
+import { FaUser, FaLock } from 'react-icons/fa'; // ícones adicionados
 
 const Login = () => {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [senha, setSenha] = useState('');
   const [erro, setErro] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setErro('');
 
     try {
-      const response = await axios.post('http://localhost:5145/api/users/login', {
-        username,
-        password,
+      const response = await axios.post('http://localhost:5210/api/Users/login', {
+      username,
+      password: senha
       });
 
-      const { token, role } = response.data;
-      localStorage.setItem('token', token);
+      const { id, username: nomeUsuario, role } = response.data;
+
+      localStorage.setItem('id', id);
+      localStorage.setItem('username', nomeUsuario);
       localStorage.setItem('role', role);
 
-      alert('Login realizado com sucesso!');
-      window.location.href = '/dashboard';
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        setErro(error.response?.data || 'Erro ao fazer login');
-      } else {
-        setErro('Erro desconhecido');
-      }
+      window.location.href = '/dashboard'; // redireciona após login
+    } catch (err: unknown) {
+      console.error(err);
+      setErro('Usuário ou senha inválidos.');
     }
   };
 
@@ -36,32 +34,28 @@ const Login = () => {
     <div style={backgroundStyles}>
       <div style={styles.container}>
         <h2 style={styles.title}>Login</h2>
-        <form onSubmit={handleSubmit} style={styles.form}>
+        <form style={styles.form} onSubmit={handleLogin}>
           <div style={styles.inputGroup}>
-            <div style={styles.iconContainer}>
-              <FaUser style={styles.icon} />
-            </div>
+            <div style={styles.iconContainer}><FaUser style={styles.icon} /></div>
             <input
+              style={styles.input}
               type="text"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              style={styles.input}
               placeholder="Usuário"
+              onChange={e => setUsername(e.target.value)}
+              required
             />
           </div>
 
           <div style={styles.inputGroup}>
-            <div style={styles.iconContainer}>
-              <FaLock style={styles.icon} />
-            </div>
+            <div style={styles.iconContainer}><FaLock style={styles.icon} /></div>
             <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
               style={styles.input}
+              type="password"
+              value={senha}
               placeholder="Senha"
+              onChange={e => setSenha(e.target.value)}
+              required
             />
           </div>
 
