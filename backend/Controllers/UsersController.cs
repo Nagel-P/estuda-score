@@ -101,5 +101,14 @@ namespace backend.Controllers
             return Ok("Usuário removido com sucesso.");
         }
 
+        [HttpGet("alunos")]
+        public async Task<IActionResult> GetAlunos() {
+            var alunos = await _appDbContext.Users
+            .Where(u => EF.Functions.Like(u.Role.ToLower(), "%alun%"))
+            .ToListAsync();
+            return Ok(alunos);
+        }
+
+
     }
 }
