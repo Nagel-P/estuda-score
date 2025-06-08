@@ -93,20 +93,20 @@ function PainelAluno() {
         <p>© 2025 EducaScore - Painel do Aluno</p>
       </footer>
 
-      {mostrarHistorico && historicoAlunoId && (
-        <HistoricoTransacoesModal alunoId={historicoAlunoId} onClose={fecharHistorico} />
-      )}
+        {mostrarHistorico && historicoAlunoId && (
+          <HistoricoTransacoesModal userId={historicoAlunoId} onClose={fecharHistorico} />
+        )}
 
-      {mostrarRegistroAluno && (
-        <RegistrarAlunoModal onClose={fecharRegistroAluno} />
-      )}
+        {mostrarRegistroAluno && (
+          <RegistrarAlunoModal onClose={fecharRegistroAluno} />
+        )}
 
-      {mostrarEditarAluno && alunoParaEditar && (
-        <EditarAlunoModal
-          aluno={alunoParaEditar}
-          onClose={fecharEditarAluno}
-        />
-      )}
+        {mostrarEditarAluno && alunoParaEditar && (
+          <EditarAlunoModal
+            aluno={alunoParaEditar}
+            onClose={fecharEditarAluno}
+          />
+        )}
     </div>
   );
 }

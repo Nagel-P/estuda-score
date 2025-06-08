@@ -1,36 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './HistoricoTransacoesModal.css';
+import axios from 'axios';
 
-function HistoricoTransacoesModal({ onClose }) {
-  const historico = [
-    { id: 1, data: '2025-05-18', descricao: 'Mensalidade Maio', valor: 'R$ 100,00' },
-    { id: 2, data: '2025-04-20', descricao: 'Livro Didático', valor: 'R$ 50,00' },
-    { id: 3, data: '2025-03-25', descricao: 'Passeio Escolar', valor: 'R$ 80,00' },
-    // ... mais transações
-  ];
+function HistoricoTransacoesModal({ onClose, userId }) {
+  const [historico, setHistorico] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+
+  useEffect(() => {
+    const buscarHistorico = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5210/api/RecompensasControllers/historico?userId=${userId}`);
+        setHistorico(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar histórico:', error);
+      } finally {
+        setCarregando(false);
+      }
+    };
+
+    if (userId) {
+      buscarHistorico();
+    }
+  }, [userId]);
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
         <header className="modal-header">
-          <h2>Histórico Completo de Transações</h2>
+          <h2>Histórico de Recompensas</h2>
           <button onClick={onClose} className="modal-close-button">
             Fechar
           </button>
         </header>
         <main className="modal-body">
-          <ul className="historico-lista">
-            {historico.map(transacao => (
-              <li key={transacao.id} className="transacao-item">
-                <div className="transacao-detalhes">
-                  <span className="transacao-data">{transacao.data}</span>
-                  <span className="transacao-valor">{transacao.valor}</span>
-                </div>
-                {transacao.descricao && <p className="transacao-descricao">{transacao.descricao}</p>}
-              </li>
-            ))}
-            {historico.length === 0 && <p>Nenhuma transação encontrada.</p>}
-          </ul>
+          {carregando ? (
+            <p>Carregando...</p>
+          ) : (
+            <ul className="historico-lista">
+              {historico.map(troca => (
+                <li key={troca.id} className="transacao-item">
+                  <div className="transacao-detalhes">
+                    <span className="transacao-data">
+                      {new Date(troca.dataGeracao).toLocaleDateString()}
+                    </span>
+                    <span className="transacao-valor">{troca.pontosGastos} pontos</span>
+                  </div>
+                  <p className="transacao-descricao">Item: {troca.nomeRecompensa}</p>
+                </li>
+              ))}
+              {historico.length === 0 && <p>Nenhuma troca realizada ainda.</p>}
+            </ul>
+          )}
         </main>
       </div>
     </div>
