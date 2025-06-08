@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FaUser, FaLock } from 'react-icons/fa'; // ícones adicionados
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [erro, setErro] = useState('');
 
@@ -13,17 +13,18 @@ const Login = () => {
 
     try {
       const response = await axios.post('http://localhost:5210/api/Users/login', {
-      username,
+      email,
       password: senha
       });
 
-      const { id, username: nomeUsuario, role } = response.data;
+      const { id, email: nomeUsuario, role } = response.data;
 
       localStorage.setItem('id', id);
-      localStorage.setItem('username', nomeUsuario);
+      localStorage.setItem('email', nomeUsuario);
       localStorage.setItem('role', role);
 
       window.location.href = '/dashboard'; // redireciona após login
+
     } catch (err: unknown) {
       console.error(err);
       setErro('Usuário ou senha inválidos.');
@@ -40,9 +41,9 @@ const Login = () => {
             <input
               style={styles.input}
               type="text"
-              value={username}
+              value={email}
               placeholder="Usuário"
-              onChange={e => setUsername(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
               required
             />
           </div>

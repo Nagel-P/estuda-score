@@ -27,7 +27,7 @@ namespace backend.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto login)
         {
-            var user = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Username == login.Username);
+            var user = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Email == login.Email);
 
             if (user == null || user.Password != login.Password)
                 return Unauthorized("Credenciais inválidas");
