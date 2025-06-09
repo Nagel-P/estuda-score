@@ -56,10 +56,13 @@ namespace backend.Controllers
             if (recompensaExistente == null)
                 return NotFound($"Recompensa com o ID {id} não foi encontrado.");
 
+            // Evita sobrescrever o ID por engano
+            recompensaAtualizada.Id = recompensaExistente.Id;
+
             _appDbContext.Entry(recompensaExistente).CurrentValues.SetValues(recompensaAtualizada);
             await _appDbContext.SaveChangesAsync();
 
-            return Ok("Recompensa atualizado com sucesso.");
+            return Ok("Recompensa atualizada com sucesso.");
         }
 
         [HttpDelete("{id}")]

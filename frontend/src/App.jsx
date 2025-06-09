@@ -10,6 +10,10 @@ import TelaInclusaoNotas from './pages/TelaInclusaoNotas/TelaInclusaoNotas';
 import TelaInicial from './pages/TelaInicial/TelaInicial';
 import TelaListaAlunos from './pages/TelaListaAlunos/TelaListaAlunos';
 import MasterAdmin from './pages/TelaMasterAdmin/MasterAdmin';
+import RecompensasAdmin from './pages/TelaRecompensasAdmin/RecompensasAdmin';
+import ListaInstituicoes from './pages/TelaListaInstituicoes/ListaInstituicoes';
+import TelaAluno from './pages/TelaAluno/TelaAluno';
+import Recompensas from './pages/Recompensas/Recompensas';
 
 function App() {
   return (
@@ -22,6 +26,10 @@ function App() {
       <Route path="/inclusao-notas" element={<TelaInclusaoNotas />} />
       <Route path="/lista-alunos" element={<TelaListaAlunos />} />
       <Route path="/master-admin" element={<MasterAdmin />} />
+      <Route path="/recompensas-admin" element={<RecompensasAdmin />} />
+      <Route path="/lista-instituicoes" element={<ListaInstituicoes />} />
+      <Route path="/aluno" element={<TelaAluno />} />
+      <Route path="/recompensas" element={<Recompensas />} />
     </Routes>
   );
 }

@@ -1,0 +1,104 @@
+
+.recompensas-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: black;
+  height: auto;
+  border-radius: 10px;
+}
+.recompensas-container h1{
+    color: rgb(43, 240, 240);
+    text-align: center;
+}
+
+.recompensas-container p{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+.recompensas-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  
+}
+
+.pontos-usuario {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.recompensas-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.recompensa-card {
+  flex: 0 0 auto;
+  width: 280px;
+  background-color: #555;
+  border: 1px solid #555;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.recompensa-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.recompensa-card button{
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.recompensa-titulo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.recompensa-descricao {
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.recompensa-pontos {
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.botao-resgatar {
+  background-color: #28a745;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.botao-resgatar:hover {
+  background-color: #218838;
+}
+
+.historico-recompensas{
+    background-color: #555;
+}
