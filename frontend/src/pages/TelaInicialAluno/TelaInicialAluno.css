@@ -1,0 +1,148 @@
+/* src/pages/TelaInicialAluno/TelaInicialAluno.css */
+
+/* Importação da fonte (importante para que os estilos de fonte funcionem) */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800&display=swap');
+
+/*
+  Estilos globais para o body que garantem a imagem de fundo e a centralização do conteúdo.
+  Se você já tem um body no seu index.css que faz isso, você pode remover este bloco.
+  No entanto, ter ele aqui garante que a TelaInicialAluno sempre terá o fundo esperado.
+*/
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  /* CAMINHO DA IMAGEM: Use o caminho relativo à pasta `public` do seu projeto React */
+  background-image: url('/images/azulp.jpg'); /* <<<< VERIFIQUE ESTE CAMINHO NOVAMENTE */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh; /* Garante que o fundo cubra toda a altura da tela */
+  color: #fff; /* Cor do texto padrão para branco */
+  display: flex; /* Para centralizar o conteúdo principal da tela */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  overflow: auto; /* Permite scroll se o conteúdo for maior que a tela */
+}
+
+/* Container principal da tela inicial do aluno */
+.tela-inicial-aluno {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 960px; /* Largura máxima para um design responsivo */
+  text-align: center;
+  padding: 80px;
+  border-radius: 20px;
+  background-color: rgba(20, 20, 20, 0.8); /* Fundo escuro semi-transparente */
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6); /* Sombra para profundidade */
+  backdrop-filter: blur(12px); /* Efeito de desfoque de fundo */
+  /* Ajuste a margem superior se for necessário, para centralizar melhor */
+  margin: 40px auto; /* Margem automática para centralizar horizontalmente */
+}
+
+/* Estilo do cabeçalho da tela do aluno */
+.cabecalho-aluno {
+  background-color: rgba(30, 30, 30, 0.7); /* Fundo mais escuro para o cabeçalho */
+  color: #fff;
+  padding: 40px 60px;
+  margin-bottom: 60px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  animation: slideInDown 1s ease-out; /* Animação de entrada */
+  border: 1px solid rgba(50, 50, 50, 0.5);
+}
+
+.cabecalho-aluno h1 {
+  margin: 0;
+  font-size: 4em;
+  letter-spacing: 1px;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.cabecalho-aluno h1 .nome-principal-aluno {
+  color: #4dd0e1; /* Cor de destaque para o nome do aluno */
+}
+
+.cabecalho-aluno .subtitulo-cabecalho-aluno {
+  color: #eee;
+  font-size: 1.4em;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+/* Container dos botões de navegação */
+.menu-container-aluno {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Faz os botões ocuparem a largura total disponível */
+  gap: 20px; /* Espaçamento entre os botões */
+  width: 80%;
+  max-width: 400px;
+}
+
+/* Estilos para os botões principais */
+.botao-aluno-principal,
+.botao-aluno-secundario {
+  text-decoration: none;
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  font-weight: 700;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  border: none;
+  background-color: rgba(63, 81, 181, 0.9); /* Azul padrão, seguindo o padrão da instituição */
+  cursor: pointer; /* Indica que é clicável */
+}
+
+.botao-aluno-principal:hover,
+.botao-aluno-secundario:hover {
+  transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  background-color: rgba(48, 63, 159, 1); /* Azul mais escuro no hover */
+}
+
+.botao-aluno-principal:active,
+.botao-aluno-secundario:active {
+  transform: translateY(0); /* Retorna à posição original ao clicar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo específico para um botão secundário (como "Sair") */
+.botao-aluno-secundario {
+    background-color: rgba(100, 100, 100, 0.7); /* Cor diferente para ações secundárias */
+}
+
+.botao-aluno-secundario:hover {
+    background-color: rgba(80, 80, 80, 0.9);
+}
+
+/* Rodapé da página */
+.rodape-aluno {
+  color: #eee;
+  padding: 30px;
+  font-size: 0.9em;
+  text-align: center;
+  margin-top: 80px;
+  width: 100%;
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+}
+
+/* Animação para o cabeçalho */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
