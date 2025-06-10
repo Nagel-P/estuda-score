@@ -10,7 +10,8 @@ namespace backend.Controllers
     public class RecompensasControllers : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
-        public RecompensasControllers(AppDbContext appDbContext) {
+        public RecompensasControllers(AppDbContext appDbContext)
+        {
             _appDbContext = appDbContext;
         }
 
@@ -33,9 +34,11 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> AddRecompensa (Recompensa recompensa){
-            
-            if (recompensa == null){
+        public async Task<ActionResult<User>> AddRecompensa(Recompensa recompensa)
+        {
+
+            if (recompensa == null)
+            {
                 return BadRequest("Dados inválidos");
             }
 
@@ -72,5 +75,25 @@ namespace backend.Controllers
 
             return Ok("Recompensa removido com sucesso.");
         }
+
+        [HttpGet("historico")]
+        public async Task<ActionResult<IEnumerable<object>>> ObterHistoricoTrocas(int userId)
+        {
+            var vales = await _appDbContext.Vales
+                .Where(v => v.UserId == userId)
+                .Include(v => v.Recompensa)
+                .OrderByDescending(v => v.DataGeracao)
+                .Select(v => new {
+                    v.Id,
+                    v.DataGeracao,
+                    NomeRecompensa = v.Recompensa.Nome,
+                    PontosGastos = v.Recompensa.PontosNecessarios
+                })
+                .ToListAsync();
+
+            return Ok(vales);
+}
     }
+    
+    
 }

@@ -1,0 +1,299 @@
+/* src/pages/Recompensas/Recompensas.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800&display=swap');
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/images/azulp.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.recompensas-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 95%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: rgba(30, 30, 30, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    color: #eee;
+}
+
+.recompensas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(50, 150, 200, 0.3);
+}
+
+.recompensas-header h1 {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #64b5f6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+.botao-voltar {
+    text-decoration: none;
+    color: #fff;
+    background-color: rgba(100, 149, 237, 0.8);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.botao-voltar:hover {
+    background-color: rgba(65, 105, 225, 1);
+    transform: translateY(-3px);
+}
+
+.recompensas-main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.pontos-section,
+.recompensas-list-section,
+.historico-recompensas-section {
+    background-color: rgba(40, 40, 40, 0.7);
+    color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.pontos-section h2,
+.recompensas-list-section h2,
+.historico-recompensas-section h2 {
+    color: #a7ffeb;
+    margin-bottom: 15px;
+    font-size: 2em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.pontos-section p {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.pontos-section .pontos-valor {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffeb3b;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.no-rewards-message,
+.no-history-message {
+    color: #ccc;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+.recompensas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: rgba(40, 40, 40, 0.6);
+    border-radius: 10px;
+}
+
+.recompensa-card {
+    background-color: rgba(50, 50, 50, 0.8);
+    color: #eee;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recompensa-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.recompensa-card h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #a7ffeb;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.recompensa-card .recompensa-descricao {
+    font-size: 1em;
+    color: #ccc;
+    margin-bottom: 15px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.recompensa-card .recompensa-pontos {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffeb3b;
+    margin-bottom: 20px;
+}
+
+.botao-resgatar {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    width: 80%;
+    margin-top: auto;
+}
+
+.botao-resgatar:hover {
+    background-color: #43a047;
+    transform: scale(1.05);
+}
+
+.botao-resgatar:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    opacity: 0.8;
+}
+
+.historico-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(40, 40, 40, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.historico-item {
+    background-color: rgba(50, 50, 50, 0.7);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+    color: #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.historico-item span {
+    margin-right: 10px;
+}
+
+.historico-item .historico-pontos {
+    font-weight: bold;
+    color: #ffeb3b;
+}
+
+.historico-item .historico-data {
+    font-style: italic;
+    color: #bbb;
+}
+
+.recompensas-footer {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9em;
+    margin-top: 40px;
+    border-top: 1px solid rgba(50, 150, 200, 0.3);
+}
+
+@media (max-width: 992px) {
+    .recompensas-header h1 {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .recompensas-page-container {
+        padding: 30px;
+        margin: 20px auto;
+    }
+    .recompensas-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .recompensas-header h1 {
+        font-size: 1.8em;
+    }
+    .recompensas-grid {
+        grid-template-columns: 1fr;
+    }
+    .recompensa-card {
+        width: auto;
+        text-align: center;
+    }
+    .botao-resgatar {
+        width: 90%;
+    }
+    .historico-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .historico-item span {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .recompensas-page-container {
+        padding: 15px;
+        margin: 10px auto;
+    }
+    .recompensas-header h1 {
+        font-size: 1.5em;
+    }
+    .pontos-section h2 {
+        font-size: 1.4em;
+    }
+    .recompensa-card h3 {
+        font-size: 1.2em;
+    }
+}
