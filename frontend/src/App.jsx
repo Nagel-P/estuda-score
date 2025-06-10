@@ -21,8 +21,8 @@ function App() {
   return (
     <Routes>
       {/* Rotas da Instituição/Admin */}
-      <Route path="/" element={<TelaInicial />} /> {/* Rota padrão para a Instituição (Tela de Login/Cadastro) */}
-      <Route path="/login" element={<Login />} /> {/* Rota de login (pode ser a mesma que a tela inicial se o login estiver nela) */}
+      <Route path="/instituicao" element={<TelaInicial />} /> {/* Rota padrão para a Instituição (Tela de Login/Cadastro) */}
+      <Route path="/" element={<Login />} /> {/* Rota de login (pode ser a mesma que a tela inicial se o login estiver nela) */}
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/painel-aluno" element={<PainelAluno />} /> {/* Painel Administrativo de Alunos */}
       <Route path="/inclusao-notas" element={<TelaInclusaoNotas />} />

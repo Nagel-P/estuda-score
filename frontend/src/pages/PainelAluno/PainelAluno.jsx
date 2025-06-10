@@ -72,7 +72,7 @@ function PainelAluno() {
     <div className="painel-aluno">
       <header className="cabecalho-pagina">
         <h1>Painel de Controle de Aluno</h1>
-        <Link to="/" className="botao-voltar">Voltar ao Home</Link>
+        <Link to="/instituicao" className="botao-voltar">Voltar ao Home</Link>
       </header>
 
       <main className="conteudo-principal">

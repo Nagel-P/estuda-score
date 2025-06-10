@@ -26,10 +26,10 @@ const Login = () => {
         // Redirecionamento baseado no role
         if (role === 'Aluno' || role === 'aluno') {
           window.location.href = '/aluno';
-        } else if (role === 'Instituicao') {
-          window.location.href = '/dashboard';
-        } else if (role === 'Admin') {
-          window.location.href = '/admin';
+        } else if (role === 'Instituicao' || role === 'instituição' || role === 'instituicao') {
+          window.location.href = '/';
+        } else if (role === 'Admin' || role === 'admin') {
+          window.location.href = '/master-admin';
         } 
 
       } catch (err: unknown) {

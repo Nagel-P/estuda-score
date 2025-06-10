@@ -56,7 +56,7 @@ useEffect(() => {
   return (
     <div className="tela-lista-alunos">
       <h1>Lista de Alunos</h1>
-      <Link to="/" className="botao-voltar">
+      <Link to="/instituicao" className="botao-voltar">
         Voltar ao Home
       </Link>
 
