@@ -1,216 +1,215 @@
 /* src/pages/TelaListaAlunos/TelaListaAlunos.css */
+
 .tela-lista-alunos {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5; /* Cor de fundo mais clara e moderna */
-  min-height: 100vh;
-  color: #343a40; /* Cor de texto padrão */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+    color: #343a40;
 }
 
 .tela-lista-alunos h1 {
-  font-size: 2.8em;
-  color: #2c3e50; /* Título mais escuro e proeminente */
-  margin-bottom: 35px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Sombra suave para o título */
+    font-size: 2.8em;
+    color: #2c3e50;
+    margin-bottom: 35px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
 }
 
 .botao-voltar {
-  padding: 12px 25px;
-  background-color: #6c757d; /* Cinza médio */
-  color: white;
-  border: none;
-  border-radius: 8px; /* Bordas mais arredondadas */
-  cursor: pointer;
-  font-size: 1.1em;
-  text-decoration: none;
-  margin-bottom: 30px; /* Mais espaçamento abaixo do botão */
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra mais visível */
+    padding: 12px 25px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    text-decoration: none;
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .botao-voltar:hover {
-  background-color: #5a6268;
-  transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+    background-color: #5a6268;
+    transform: translateY(-2px);
 }
 
 .conteudo-lista-alunos {
-  width: 95%;
-  max-width: 1300px; /* Aumentei a largura máxima */
-  background-color: #fff;
-  border-radius: 12px; /* Bordas mais arredondadas */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
-  padding: 40px; /* Mais padding interno */
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px; /* Espaço entre as seções de filtro e tabela */
+    width: 95%;
+    max-width: 1300px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .filtro-pesquisa {
-  margin-bottom: 20px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid #e9ecef;
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e9ecef;
 }
 
 .filtro-pesquisa h2, .tabela-lista-alunos h2 {
-  font-size: 2em;
-  color: #34495e; /* Subtítulos em azul escuro */
-  margin-bottom: 25px;
-  text-align: left;
-  border-left: 5px solid #007bff; /* Barra lateral para destaque */
-  padding-left: 15px;
+    font-size: 2em;
+    color: #34495e;
+    margin-bottom: 25px;
+    text-align: left;
+    border-left: 5px solid #007bff;
+    padding-left: 15px;
 }
 
 .filtro-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Layout responsivo para os filtros */
-  gap: 20px; /* Espaço entre os itens do filtro */
-  margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
 .filtro-item {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .filtro-item label {
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #555;
-  font-size: 0.95em;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.95em;
 }
 
 .filtro-item input {
-  padding: 12px 15px;
-  border: 1px solid #ced4da;
-  border-radius: 6px; /* Bordas arredondadas nos inputs */
-  font-size: 1em;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  width: 100%; /* Ocupa a largura total do grid item */
-  box-sizing: border-box; /* Inclui padding e borda na largura */
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .filtro-item input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Efeito de foco azul */
-  outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
 }
 
 .tabela-lista-alunos table {
-  width: 100%;
-  border-collapse: separate; /* Para permitir border-radius nas células */
-  border-spacing: 0; /* Remover espaçamento padrão */
-  margin-bottom: 30px;
-  border-radius: 10px; /* Bordas arredondadas na tabela inteira */
-  overflow: hidden; /* Para garantir que as bordas arredondadas funcionem */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave para a tabela */
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .tabela-lista-alunos th, .tabela-lista-alunos td {
-  padding: 15px 20px; /* Mais padding nas células */
-  text-align: left;
-  border-bottom: 1px solid #e9ecef;
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
 }
 
 .tabela-lista-alunos th {
-  background-color: #007bff; /* Azul primário */
-  color: white;
-  font-weight: 600; /* Um pouco mais encorpado */
-  text-transform: uppercase;
-  letter-spacing: 0.5px; /* Espaçamento entre letras */
-  text-align: center; /* Centralizar o texto do cabeçalho */
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
 }
 
 .tabela-lista-alunos tbody tr:nth-child(even) {
-  background-color: #f8f9fa; /* Cor de fundo para linhas pares */
+    background-color: #f8f9fa;
 }
 
 .tabela-lista-alunos tbody tr:hover {
-  background-color: #e2f0ff; /* Destaque ao passar o mouse na linha */
-  transition: background-color 0.2s ease;
+    background-color: #e2f0ff;
+    transition: background-color 0.2s ease;
 }
 
 .tabela-lista-alunos td {
-  vertical-align: middle; /* Alinhar conteúdo no meio da célula */
+    vertical-align: middle;
 }
 
-.acoes-botoes { /* Estilo específico para a célula de botões */
-  display: flex;
-  flex-wrap: wrap; /* Permite quebra de linha se muitos botões */
-  gap: 10px; /* Espaçamento de 10px entre os botões */
-  justify-content: center; /* Centraliza os botões dentro da célula */
-  align-items: center; /* Alinha verticalmente no centro */
-  padding: 5px; /* Pequeno padding na célula para não grudar nas bordas */
+.acoes-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
 }
 
 .tabela-lista-alunos td button {
-  padding: 8px 14px; /* Padding ajustado */
-  color: white;
-  border: none;
-  border-radius: 5px; /* Bordas arredondadas nos botões */
-  cursor: pointer;
-  font-size: 0.9em;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra para os botões */
-  white-space: nowrap; /* Evita quebra de linha dentro do texto do botão */
+    padding: 8px 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    white-space: nowrap;
 }
 
 .tabela-lista-alunos td button:hover {
-  transform: translateY(-1px); /* Pequeno efeito de elevação */
+    transform: translateY(-1px);
 }
 
-/* Estilos específicos para os novos botões */
 .botao-selecionar-aluno {
-  background-color: #28a745; /* Verde vibrante */
+    background-color: #28a745;
 }
 .botao-selecionar-aluno:hover {
-  background-color: #218838;
+    background-color: #218838;
 }
 
 .botao-abrir-painel {
-  background-color: #17a2b8; /* Azul claro / Ciano */
+    background-color: #17a2b8;
 }
 .botao-abrir-painel:hover {
-  background-color: #138496;
+    background-color: #138496;
 }
 
 .no-results {
-  text-align: center;
-  padding: 30px;
-  font-size: 1.2em;
-  color: #6c757d;
-  background-color: #f2f2f2;
-  border-radius: 8px;
-  margin-top: 20px;
+    text-align: center;
+    padding: 30px;
+    font-size: 1.2em;
+    color: #6c757d;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    margin-top: 20px;
 }
 
-/* Responsividade Básica */
 @media (max-width: 768px) {
-  .tela-lista-alunos h1 {
-    font-size: 2em;
-  }
-  .conteudo-lista-alunos {
-    padding: 20px;
-  }
-  .tabela-lista-alunos th, .tabela-lista-alunos td {
-    padding: 10px 12px;
-    font-size: 0.9em;
-  }
-  .tabela-lista-alunos td button {
-    font-size: 0.8em;
-    padding: 6px 10px;
-    width: 100%; /* Botões preenchem a largura total em telas menores */
-    box-sizing: border-box; /* Inclui padding e borda na largura */
-  }
-  .filtro-grid {
-    grid-template-columns: 1fr; /* Em telas menores, os filtros ficam em coluna */
-  }
-  .acoes-botoes {
-    flex-direction: column; /* Botões em coluna em telas menores */
-    align-items: stretch; /* Estica para preencher a largura */
-    gap: 5px; /* Reduzi o gap para telas menores */
-  }
+    .tela-lista-alunos h1 {
+        font-size: 2em;
+    }
+    .conteudo-lista-alunos {
+        padding: 20px;
+    }
+    .tabela-lista-alunos th, .tabela-lista-alunos td {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+    .tabela-lista-alunos td button {
+        font-size: 0.8em;
+        padding: 6px 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .filtro-grid {
+        grid-template-columns: 1fr;
+    }
+    .acoes-botoes {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+    }
 }
