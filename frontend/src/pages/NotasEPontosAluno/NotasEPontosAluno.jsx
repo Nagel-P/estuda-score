@@ -1,86 +1,89 @@
-import React, { useEffect, useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './NotasEPontosAluno.css';
-import axios from 'axios';
 
 function NotasEPontosAluno() {
-  const [pontos, setPontos] = useState(0);
-  const [mediaNotas, setMediaNotas] = useState(0);
-  const [notas, setNotas] = useState([]);
+    const [notas, setNotas] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [pontosAcumulados, setPontosAcumulados] = useState(0);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchResumoCompleto = async () => {
-      try {
-        const token = localStorage.getItem('token'); // token JWT
+    useEffect(() => {
+        const fetchNotasEPontos = async () => {
+            try {
+                setNotas([]);
+                setPontosAcumulados(0);
+            } catch (err) {
+                console.error("Erro ao carregar dados:", err);
+                setError("Não foi possível carregar os dados. Verifique a conexão com o servidor.");
+            } finally {
+                setLoading(false);
+            }
+        };
 
-        const response = await axios.get(`http://localhost:5210/api/notas/resumo-completo`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+        const initialLoadTimer = setTimeout(() => {
+            fetchNotasEPontos();
+        }, 500);
 
-        const { pontos, mediaNotas, notas } = response.data;
+        return () => clearTimeout(initialLoadTimer);
+    }, []);
 
-        setPontos(pontos);
-        setMediaNotas(mediaNotas);
-        setNotas(notas);
-      } catch (error) {
-        console.error('Erro ao buscar dados do aluno:', error);
-      }
-    };
+    return (
+        <div className="container-aluno-generico">
+            <div className="cabecalho-pagina-aluno">
+                <h1>Notas e Pontos</h1>
+                <Link to="/painel-aluno" className="botao-voltar-aluno">
+                    Voltar
+                </Link>
+            </div>
 
-    fetchResumoCompleto();
-  }, []);
+            <div className="conteudo-principal-aluno">
+                <section className="secao-info-aluno">
+                    <h2>Seu Saldo de Pontos</h2>
+                    {loading ? (
+                        <p>Carregando pontos...</p>
+                    ) : error ? (
+                        <p style={{ color: 'red' }}>{error}</p>
+                    ) : (
+                        <p>Pontos Acumulados: <span style={{ color: '#ffeb3b', fontWeight: 'bold' }}>{pontosAcumulados}</span></p>
+                    )}
+                </section>
 
-  return (
-    <div className="container-aluno-generico">
-      <header className="cabecalho-pagina-aluno">
-        <h1>Minhas Notas e Pontos</h1>
-        <Link to="/aluno" className="botao-voltar-aluno">Voltar</Link>
-      </header>
+                <section className="tabela-notas-container">
+                    <h2>Notas por Disciplina</h2>
+                    {loading ? (
+                        <p style={{ textAlign: 'center', color: '#ccc' }}>Carregando notas...</p>
+                    ) : error ? (
+                        <p style={{ textAlign: 'center', color: 'red' }}>{error}</p>
+                    ) : notas.length > 0 ? (
+                        <table className="tabela-notas">
+                            <thead>
+                                <tr>
+                                    <th>Disciplina</th>
+                                    <th style={{ textAlign: 'center' }}>Nota</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {notas.map((nota) => (
+                                    <tr key={nota.id || nota.disciplina}>
+                                        <td>{nota.disciplina}</td>
+                                        <td style={{ textAlign: 'center' }}>{nota.valor ? nota.valor.toFixed(1) : 'N/A'}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <p className="no-notes-message">Sem notas registradas.</p>
+                    )}
+                </section>
+            </div>
 
-      <main className="conteudo-principal-aluno">
-        <section className="secao-info-aluno">
-          <h2>Saldo Atual</h2>
-          <p>Pontos Acumulados: <strong>{pontos}</strong></p>
-          <p>Média de Notas: <strong>{mediaNotas.toFixed(2)}</strong></p>
-        </section>
-
-        <section className="secao-lista-notas">
-          <h2>Notas Detalhadas</h2>
-          {notas.length === 0 ? (
-            <p>Sem notas registradas.</p>
-          ) : (
-            <table className="tabela-notas">
-              <thead>
-                <tr>
-                  <th>Disciplina</th>
-                  <th>Nota</th>
-                  <th>Pontos Gerados</th>
-                  <th>Data</th>
-                </tr>
-              </thead>
-              <tbody>
-                  {notas.map((nota) => (
-                    <tr key={nota.id}>
-                      <td>{nota.disciplina}</td>
-                      <td>{nota.valorNota.toFixed(2)}</td>
-                      <td>{nota.pontosGerados}</td>
-                      <td>{nota.dataLancamento}</td>
-                    </tr>
-                  ))}
-                </tbody>
-
-            </table>
-          )}
-        </section>
-      </main>
-
-      <footer className="rodape-pagina-aluno">
-        <p>© 2025 EstudaScore - Notas e Pontos</p>
-      </footer>
-    </div>
-  );
+            <footer className="rodape-pagina-aluno">
+                EstudaScore © 2024
+            </footer>
+        </div>
+    );
 }
 
 export default NotasEPontosAluno;
