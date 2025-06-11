@@ -11,11 +11,15 @@ import TelaInicial from './pages/TelaInicial/TelaInicial'; // Tela Inicial da In
 import TelaListaAlunos from './pages/TelaListaAlunos/TelaListaAlunos';
 import MasterAdmin from './pages/TelaMasterAdmin/MasterAdmin';
 
+
+
 // Importações das novas páginas específicas do Aluno
 import TelaInicialAluno from './pages/TelaInicialAluno/TelaInicialAluno'; // Nova tela inicial para o aluno
 import NotasEPontosAluno from './pages/NotasEPontosAluno/NotasEPontosAluno'; // Nova tela para notas e pontos do aluno
 import HistoricoTransacoesAluno from './pages/HistoricoTransacoesAluno/HistoricoTransacoesAluno'; // Nova tela para histórico de transações do aluno
 import Recompensas from './pages/Recompensas/Recompensas'; // A nova tela de Recompensas
+import RecompensasAdmin from './pages/TelaRecompensasAdmin/RecompensasAdmin';
+import ListaInstituicoes from './pages/TelaListaInstituicoes/ListaInstituicoes';
 
 function App() {
   return (
@@ -34,6 +38,9 @@ function App() {
       <Route path="/aluno/notas-e-pontos" element={<NotasEPontosAluno />} /> {/* Tela para o aluno ver suas notas e pontos */}
       <Route path="/aluno/historico-transacoes" element={<HistoricoTransacoesAluno />} /> {/* Tela para o aluno ver seu histórico de resgates */}
       <Route path="/recompensas" element={<Recompensas />} /> {/* Tela de Recompensas para o aluno (rota simples para facilitar o acesso) */}
+
+      <Route path="/recompensas-admin" element={<RecompensasAdmin />} />
+      <Route path="/lista-instituicoes" element={<ListaInstituicoes />} />
     </Routes>
   );
 }

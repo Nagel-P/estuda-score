@@ -12,8 +12,8 @@ function MasterAdmin() {
 
       <div className="menu-container">
         <Link to="/painel-aluno" className="botao-principal">Painel de Controle de Aluno</Link>
-        <Link to="/lista-alunos" className="botao-principal">Lista de Alunos</Link> 
-        <Link to="/inclusao-notas" className="botao-principal">Inclusão de Notas</Link>
+        <Link to="/lista-instituicoes" className="botao-principal">Painel de Controle de Instituições</Link> 
+        <Link to="/recompensas-admin" className="botao-principal">Painel de Controle de Recompensas</Link>
       </div>
 
       <footer className="rodape">
