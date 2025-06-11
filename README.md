@@ -29,6 +29,8 @@
   - Git e GitHub
   - GitHub Pages (para documentação ou versão estática)
 
+## 📹 [[Assista ao pitch técnico final](https://drive.google.com/file/d/17H2l5YS5UDnF8X6SpjyFfqULAzA7Mm6h/view?usp=sharing)
+
 ## 👨‍👩‍👦 Membros do Grupo
 
 - *Brian Cristian Cavalheiro* – RA: 34274057  
