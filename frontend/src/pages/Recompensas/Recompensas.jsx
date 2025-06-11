@@ -1,7 +1,6 @@
-// src/pages/Recompensas/Recompensas.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from 'react-router-dom'; // Adicionando useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import "./Recompensas.css";
 
 export default function Recompensas() {
@@ -10,39 +9,51 @@ export default function Recompensas() {
   const [historico, setHistorico] = useState([]);
   const navigate = useNavigate();
 
-  // Pega o ID do usuário logado do localStorage
-  const userId = parseInt(localStorage.getItem("userId"));
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+  const token = localStorage.getItem("token");
+
+  const userId = usuarioLogado?.id;
+
+  const axiosConfig = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
   useEffect(() => {
-    // Se não houver ID de usuário, redireciona para login
-    if (!userId) {
-      alert("Usuário não identificado. Faça login novamente.");
-      navigate("/login");
+    if (!token || !userId) {
+      alert("Você precisa estar logado para acessar esta página.");
       return;
     }
 
     async function fetchData() {
       try {
-        // Puxa recompensas disponíveis
-        const resRecompensas = await axios.get("http://localhost:5210/api/RecompensasControllers");
+        const resRecompensas = await axios.get(
+          "http://localhost:5210/api/RecompensasControllers",
+          axiosConfig
+        );
         setRecompensas(resRecompensas.data);
 
-        // Puxa os pontos do usuário logado
-        const resUsuario = await axios.get(`http://localhost:5210/api/Users/${userId}`);
-        setPontosUsuario(resUsuario.data.pontos ?? 0); // fallback para 0 caso seja undefined
+        const resUsuario = await axios.get(
+          `http://localhost:5210/api/Users/${userId}`,
+          axiosConfig
+        );
+        setPontosUsuario(resUsuario.data.pontos);
 
-        // Puxa o histórico de resgates do usuário
-        const resHistorico = await axios.get(`http://localhost:5210/api/RecompensasControllers/historico?userId=${userId}`);
+        const resHistorico = await axios.get(
+          `http://localhost:5210/api/RecompensasControllers/historico?userId=${userId}`,
+          axiosConfig
+        );
         setHistorico(resHistorico.data);
       } catch (err) {
         console.error("Erro ao buscar dados:", err);
+        alert("Erro ao carregar dados. Verifique sua conexão ou autenticação.");
       }
     }
 
     fetchData();
-  }, [userId, navigate]);
+  }, [userId, token]);
 
-  // Função para resgatar recompensa
   async function resgatarRecompensa(recompensaId, pontosNecessarios) {
     if (pontosUsuario < pontosNecessarios) {
       alert("Pontos insuficientes.");
@@ -50,13 +61,19 @@ export default function Recompensas() {
     }
 
     try {
-      await axios.post(`http://localhost:5210/api/Troca/gerar-vale?userId=${userId}&recompensaId=${recompensaId}`);
+      await axios.post(
+        `http://localhost:5210/api/Troca/gerar-vale?userId=${userId}&recompensaId=${recompensaId}`,
+        {},
+        axiosConfig
+      );
+
       alert("Recompensa resgatada com sucesso!");
+      setPontosUsuario((prevPontos) => prevPontos - pontosNecessarios);
 
-      // Atualiza os pontos e o histórico
-      setPontosUsuario(prev => prev - pontosNecessarios);
-
-      const resHistorico = await axios.get(`http://localhost:5210/api/RecompensasControllers/historico?userId=${userId}`);
+      const resHistorico = await axios.get(
+        `http://localhost:5210/api/RecompensasControllers/historico?userId=${userId}`,
+        axiosConfig
+      );
       setHistorico(resHistorico.data);
     } catch (error) {
       alert("Erro ao resgatar recompensa.");
@@ -86,7 +103,9 @@ export default function Recompensas() {
                 <div className="recompensa-card" key={r.id}>
                   <h3>{r.nome}</h3>
                   <p className="recompensa-descricao">{r.descricao}</p>
-                  <p className="recompensa-pontos">Pontos: <span>{r.pontosNecessarios}</span></p>
+                  <p className="recompensa-pontos">
+                    Pontos: <span>{r.pontosNecessarios}</span>
+                  </p>
                   <button
                     onClick={() => resgatarRecompensa(r.id, r.pontosNecessarios)}
                     className="botao-resgatar"
@@ -108,8 +127,8 @@ export default function Recompensas() {
             <ul className="historico-list">
               {historico.map((h) => (
                 <li key={h.id} className="historico-item">
-                  <span>{h.nomeRecompensa}</span> - 
-                  <span className="historico-pontos">{h.pontosGastos} pontos</span> - 
+                  <span>{h.nomeRecompensa}</span> -
+                  <span className="historico-pontos"> {h.pontosGastos} pontos</span> -
                   <span className="historico-data">{new Date(h.dataGeracao).toLocaleString("pt-BR")}</span>
                 </li>
               ))}

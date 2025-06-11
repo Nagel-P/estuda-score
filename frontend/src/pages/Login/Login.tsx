@@ -22,6 +22,8 @@ const Login = () => {
     localStorage.setItem('id', id);
     localStorage.setItem('email', nomeUsuario);
     localStorage.setItem('role', role);
+    localStorage.setItem("usuarioLogado", JSON.stringify(response.data));
+
 
         // Redirecionamento baseado no role
         if (role === 'Aluno' || role === 'aluno') {
