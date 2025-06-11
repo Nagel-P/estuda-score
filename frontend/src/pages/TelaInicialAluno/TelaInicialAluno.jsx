@@ -25,7 +25,7 @@ function TelaInicialAluno() {
           Ver Recompensas Disponíveis
         </Link>
         {/* Adicione outros links relevantes para o aluno aqui, se houver */}
-        <Link to="/login" className="botao-aluno-secundario">
+        <Link to="/" className="botao-aluno-secundario">
           Sair
         </Link>
       </div>

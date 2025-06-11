@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +15,6 @@ namespace backend.Controllers
     {
         private readonly AppDbContext _appDbContext;
         private readonly JwtService _jwtService;
-
 
         public UsersController(AppDbContext appDbContext, JwtService jwtService)
         {
@@ -37,7 +35,6 @@ namespace backend.Controllers
             return Ok(new { Token = token, Role = user.Role });
         }
 
-        // GET: api/users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> ObterUsuarios()
         {
@@ -45,33 +42,27 @@ namespace backend.Controllers
             return Ok(usuarios);
         }
 
-        // GET: api/users/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> ObterUsuarioPorId(int id)
         {
             var usuario = await _appDbContext.Users.FindAsync(id);
-
             if (usuario == null)
                 return NotFound($"Usuário com o ID {id} não foi encontrado.");
-
             return Ok(usuario);
         }
 
         [HttpPost]
         public async Task<ActionResult<User>> AddUser(User user)
         {
-
             if (user == null)
-            {
                 return BadRequest("Dados inválidos");
-            }
 
             _appDbContext.Users.Add(user);
             await _appDbContext.SaveChangesAsync();
 
             return Ok(user);
         }
-        // PUT: api/users/{id}
+
         [HttpPut("{id}")]
         public async Task<IActionResult> AtualizarUsuario(int id, [FromBody] User usuarioAtualizado)
         {
@@ -86,12 +77,10 @@ namespace backend.Controllers
             return Ok("Usuário atualizado com sucesso.");
         }
 
-        // DELETE: api/users/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletarUsuario(int id)
         {
             var usuario = await _appDbContext.Users.FindAsync(id);
-
             if (usuario == null)
                 return NotFound($"Usuário com o ID {id} não foi encontrado.");
 
@@ -102,13 +91,41 @@ namespace backend.Controllers
         }
 
         [HttpGet("alunos")]
-        public async Task<IActionResult> GetAlunos() {
+        public async Task<IActionResult> GetAlunos()
+        {
             var alunos = await _appDbContext.Users
-            .Where(u => EF.Functions.Like(u.Role.ToLower(), "%alun%"))
-            .ToListAsync();
+                .Where(u => EF.Functions.Like(u.Role.ToLower(), "%alun%"))
+                .ToListAsync();
             return Ok(alunos);
         }
 
+        [HttpGet("resumo-completo/{userId}")]
+        public async Task<IActionResult> GetResumoCompleto(int userId)
+        {
+            var user = await _appDbContext.Users.FindAsync(userId);
+            if (user == null)
+                return NotFound("Usuário não encontrado.");
 
+            var notas = await _appDbContext.Notas
+                .Where(n => n.UserId == userId)
+                .Select(n => new
+                {
+                    n.Id,
+                    n.Disciplina,
+                    n.ValorNota,
+                    n.PontosGerados,
+                    DataLancamento = n.DataLancamento.ToString("yyyy-MM-dd")
+                })
+                .ToListAsync();
+
+            double mediaNotas = notas.Count > 0 ? notas.Average(n => n.ValorNota) : 0;
+
+            return Ok(new
+            {
+                Pontos = user.Pontos,
+                MediaNotas = Math.Round(mediaNotas, 2),
+                Notas = notas
+            });
+        }
     }
 }

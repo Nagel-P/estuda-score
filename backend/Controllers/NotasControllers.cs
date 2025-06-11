@@ -5,6 +5,8 @@ using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 
 namespace backend.Controllers
@@ -156,9 +158,66 @@ namespace backend.Controllers
             await _context.SaveChangesAsync();
             return Ok("Notas salvas com sucesso!");
         }
+        
+        [HttpGet("resumo/{userId}")]
+        public async Task<IActionResult> GetResumoNotas(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+                return NotFound("Usuário não encontrado.");
+
+            var notas = await _context.Notas
+                .Where(n => n.UserId == userId)
+                .ToListAsync();
+
+            double mediaNotas = notas.Count > 0 ? notas.Average(n => n.ValorNota) : 0;
+
+            return Ok(new
+            {
+                Pontos = user.Pontos,
+                MediaNotas = Math.Round(mediaNotas, 2)
+            });
+        }
+
+        [Authorize]
+        [HttpGet("resumo-completo")]
+        public async Task<IActionResult> GetResumoCompleto()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+                return Unauthorized();
+
+            int userId = int.Parse(userIdClaim.Value);
+
+            var resumo = await _context.Notas
+                .Where(n => n.UserId == userId)
+                .GroupBy(n => n.UserId)
+                .Select(g => new
+                {
+                    Pontos = g.Sum(n => n.PontosGerados),
+                    MediaNotas = g.Average(n => n.ValorNota),
+                    Notas = g.Select(n => new
+                    {
+                        n.Id,
+                        n.Disciplina,
+                        n.ValorNota,
+                        n.PontosGerados,
+                        DataLancamento = n.DataLancamento.ToString("dd/MM/yyyy")
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
+
+            if (resumo == null)
+                return NotFound(new { Mensagem = "Nenhuma nota encontrada." });
+
+            return Ok(resumo);
+        }
+    }
 
 
-        public class NotaDto {
+
+        public class NotaDto
+        {
             public int UserId { get; set; }
             public string Disciplina { get; set; }
             public double ValorNota { get; set; }
@@ -166,4 +225,4 @@ namespace backend.Controllers
 
 
     }
-}
+

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { FaUser, FaLock } from 'react-icons/fa'; // ícones adicionados
+import { FaUser, FaLock } from 'react-icons/fa';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -8,36 +8,40 @@ const Login = () => {
   const [erro, setErro] = useState('');
 
   const handleLogin = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setErro('');
+    e.preventDefault();
+    setErro('');
 
-  try {
-    const response = await axios.post('http://localhost:5210/api/Users/login', {
-      email,
-      password: senha
-    });
+    try {
+      const response = await axios.post('http://localhost:5210/api/Users/login', {
+        email,
+        password: senha
+      });
 
-    const { id, email: nomeUsuario, role } = response.data;
+      // Aqui corrigimos 'resposta' para 'response'
+      const { id, email: nomeUsuario, role, token, } = response.data;
 
-    localStorage.setItem('id', id);
-    localStorage.setItem('email', nomeUsuario);
-    localStorage.setItem('role', role);
+      localStorage.setItem('id', id);
+      localStorage.setItem('email', nomeUsuario);
+      localStorage.setItem('role', role);
+      localStorage.setItem('token', token);
+      
 
-        // Redirecionamento baseado no role
-        if (role === 'Aluno' || role === 'aluno') {
-          window.location.href = '/aluno';
-        } else if (role === 'Instituicao' || role === 'instituição' || role === 'instituicao') {
-          window.location.href = '/';
-        } else if (role === 'Admin' || role === 'admin') {
-          window.location.href = '/master-admin';
-        } 
-
-      } catch (err: unknown) {
-        console.error(err);
-        setErro('Usuário ou senha inválidos.');
+      // Redirecionamento baseado no role
+      if (role.toLowerCase() === 'aluno') {
+        window.location.href = '/aluno';
+      } else if (role.toLowerCase() === 'instituicao' || role.toLowerCase() === 'instituição') {
+        window.location.href = '/instituicao';
+      } else if (role.toLowerCase() === 'admin') {
+        window.location.href = '/master-admin';
+      } else {
+        setErro('Tipo de usuário não reconhecido.');
       }
-    };
 
+    } catch (err: unknown) {
+      console.error(err);
+      setErro('Usuário ou senha inválidos.');
+    }
+  };
 
   return (
     <div style={backgroundStyles}>
